@@ -24,6 +24,10 @@ public class Seller implements Serializable {
 		this.department = department;
 	}
 
+	public Seller() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -91,7 +95,8 @@ public class Seller implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Seller [" + name + "], Department [" + department.getName() + "]";
+		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", dateBirthdate=" + dateBirthdate
+				+ ", baseSalary=" + baseSalary + ", department=" + department + "]";
 	}
 
 }
