@@ -1,4 +1,4 @@
-package entities;
+package model.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -6,14 +6,20 @@ import java.util.Objects;
 
 public class Seller implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;// Serializing data to send by serial transmission
 
 	private int id;
 	private String name;
 	private String email;
 	private Date dateBirthdate;
 	private Double baseSalary;
+
+	// Associating objects
 	private Department department;
+
+	public Seller() {
+		// default void constructor
+	}
 
 	public Seller(int id, String name, String email, Date dateBirthdate, Double baseSalary, Department department) {
 		this.id = id;
@@ -22,10 +28,6 @@ public class Seller implements Serializable {
 		this.dateBirthdate = dateBirthdate;
 		this.baseSalary = baseSalary;
 		this.department = department;
-	}
-
-	public Seller() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getId() {

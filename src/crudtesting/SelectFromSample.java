@@ -1,4 +1,4 @@
-package app.crud;
+package crudtesting;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
