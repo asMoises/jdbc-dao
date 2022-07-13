@@ -46,6 +46,17 @@ public class ProgramaTesting {
 		Seller newSeller = new Seller(null, name, name + "@gmail.com", new Date(), salary, department);
 		sellerDao.insert(newSeller);
 		System.out.println("Inserted! New id: " + newSeller.getId());
+
+		System.out.println("\n=== Test 5: Seller Update ===");
+		System.out.print("Enter the Seller Id: ");
+		idSeller = sc.nextInt();
+		seller = sellerDao.findById(idSeller);
+		System.out.println("Enter the new name to: " + seller.getName());
+		name = sc.next();
+		seller.setName(name);
+		sellerDao.update(seller);
+		System.out.println("Update complete! New name set as: " + sellerDao.findById(idSeller).getName());
+
 		sc.close();
 	}
 
