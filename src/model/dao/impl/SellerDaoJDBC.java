@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
-
 import db.DB;
 import db.DbException;
 import model.dao.SellerDao;
@@ -71,8 +69,7 @@ public class SellerDaoJDBC implements SellerDao {
 		PreparedStatement st = null;
 		try {
 			st = conn.prepareStatement(
-					"UPDATE seller SET Name=?, Email=?, BirthDate=?, BaseSalary=?, DepartmentId=? WHERE Id=?",
-					Statement.RETURN_GENERATED_KEYS); // returns the generated keys.
+					"UPDATE seller SET Name=?, Email=?, BirthDate=?, BaseSalary=?, DepartmentId=? WHERE Id=?");
 
 			// called place holders
 			st.setString(1, obj.getName());
@@ -85,7 +82,7 @@ public class SellerDaoJDBC implements SellerDao {
 			st.setInt(6, obj.getId());
 
 			st.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());
 		} finally {
@@ -96,7 +93,22 @@ public class SellerDaoJDBC implements SellerDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement("DELETE FROM seller WHERE Id=?");
+			st.setInt(1, id);
+			int rows = st.executeUpdate();
+
+			if (rows == 0) {
+				throw new DbException("Id not found! No record deleted!");
+			} else {
+				System.out.println("Delete Completed!");
+			}
+		} catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		} finally {
+			DB.closeStatement(st);
+		}
 
 	}
 
@@ -119,7 +131,9 @@ public class SellerDaoJDBC implements SellerDao {
 
 				return obj;
 			}
-			return null;
+			else {
+				throw new DbException("Id not found!");
+			}
 
 		} catch (SQLException e) {
 			throw new DbException(e.getMessage());

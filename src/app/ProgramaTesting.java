@@ -57,6 +57,16 @@ public class ProgramaTesting {
 		sellerDao.update(seller);
 		System.out.println("Update complete! New name set as: " + sellerDao.findById(idSeller).getName());
 
+		System.out.println("\n=== Test 6: Seller Delete ===");
+		System.out.print("Enter the Seller Id to be deleted: ");
+		idSeller = sc.nextInt();
+		sellerDao.deleteById(idSeller);
+
+		list = sellerDao.findAll();
+		for (Seller obj : list) {
+			System.out.println(obj);
+		}
+
 		sc.close();
 	}
 
