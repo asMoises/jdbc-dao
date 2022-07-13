@@ -142,10 +142,7 @@ public class SellerDaoJDBC implements SellerDao {
 			DB.closeStatement(st);
 		}
 	}
-	/*
-	 * First, create Department obj with all fields and send it to create the Seller
-	 * obj, it will create the associate between the objects.
-	 */
+	
 
 	private Department instantiateDepartment(ResultSet rs) throws SQLException {
 		Department dep = new Department();
