@@ -1,5 +1,6 @@
 package app;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,10 +14,11 @@ public class ProgramaTesting {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
+		SellerDao sellerDao = DaoFactory.createSellerDao();
+
 		System.out.println("=== Test 1: Seller findById ===");
 		System.out.print("Enter the ID seller: ");
 		int idSeller = sc.nextInt();
-		SellerDao sellerDao = DaoFactory.createSellerDao();
 		Seller seller = sellerDao.findById(idSeller);// searching data on database
 		System.out.println(seller);
 
@@ -35,6 +37,15 @@ public class ProgramaTesting {
 			System.out.println(obj);
 		}
 
+		System.out.println("\n=== Test 4: Seller Insert ===");
+		System.out.print("Enter the seller name: ");
+		String name = sc.next();
+		sc.nextLine();
+		System.out.print("Enter the " + name + " salary: ");
+		Double salary = sc.nextDouble();
+		Seller newSeller = new Seller(null, name, name + "@gmail.com", new Date(), salary, department);
+		sellerDao.insert(newSeller);
+		System.out.println("Inserted! New id: " + newSeller.getId());
 		sc.close();
 	}
 

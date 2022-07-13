@@ -8,10 +8,10 @@ public class Seller implements Serializable {
 
 	private static final long serialVersionUID = 1L;// Serializing data to send by serial transmission
 
-	private int id;
+	private Integer id;
 	private String name;
 	private String email;
-	private Date dateBirthdate;
+	private Date birthDate;
 	private Double baseSalary;
 
 	// Associating objects
@@ -21,11 +21,11 @@ public class Seller implements Serializable {
 		// default void constructor
 	}
 
-	public Seller(int id, String name, String email, Date dateBirthdate, Double baseSalary, Department department) {
+	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
 		this.id = id;
 		this.name = name;
 		this.email = email;
-		this.dateBirthdate = dateBirthdate;
+		this.birthDate = birthDate;
 		this.baseSalary = baseSalary;
 		this.department = department;
 	}
@@ -55,11 +55,11 @@ public class Seller implements Serializable {
 	}
 
 	public Date getDateBirthdate() {
-		return dateBirthdate;
+		return birthDate;
 	}
 
 	public void setDateBirthdate(Date dateBirthdate) {
-		this.dateBirthdate = dateBirthdate;
+		this.birthDate = dateBirthdate;
 	}
 
 	public Double getBaseSalary() {
@@ -97,7 +97,7 @@ public class Seller implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", dateBirthdate=" + dateBirthdate
+		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", dateBirthdate=" + birthDate
 				+ ", baseSalary=" + baseSalary + ", department=" + department + "]";
 	}
 
