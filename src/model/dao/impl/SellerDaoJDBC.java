@@ -61,7 +61,6 @@ public class SellerDaoJDBC implements SellerDao {
 		} finally {
 			DB.closeStatement(st);
 		}
-
 	}
 
 	@Override
@@ -80,7 +79,6 @@ public class SellerDaoJDBC implements SellerDao {
 														// navigate into then.
 			// This one is to where clause
 			st.setInt(6, obj.getId());
-
 			st.executeUpdate();
 
 		} catch (SQLException e) {

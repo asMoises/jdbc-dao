@@ -1,11 +1,13 @@
 package app;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
+import model.entities.Seller;
 
 public class Program2 {
 
@@ -25,6 +27,23 @@ public class Program2 {
 		for (Department obj : list) {
 			System.out.println(obj);
 		}
+
+		System.out.println("\n=== Test 4: Department Insert ===");
+		System.out.print("Enter the Department name: ");
+		String name = sc.next();
+		Department newDep = new Department(null, name);
+		depDao.insert(newDep);
+		System.out.println("Inserted! New id: " + newDep.getId());
+
+		System.out.println("\n=== Test 5: Department Update ===");
+		System.out.print("Enter the Department Id: ");
+		idDep = sc.nextInt();
+		newDep = depDao.findById(idDep);
+		System.out.println("Enter the new name to: " + newDep.getName());
+		name = sc.next();
+		newDep.setName(name);
+		depDao.update(newDep);
+		System.out.println("Update complete! New name set as: " + depDao.findById(idDep).getName());
 
 		sc.close();
 
