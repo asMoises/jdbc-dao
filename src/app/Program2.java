@@ -1,13 +1,11 @@
 package app;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.DepartmentDao;
 import model.entities.Department;
-import model.entities.Seller;
 
 public class Program2 {
 
@@ -44,6 +42,16 @@ public class Program2 {
 		newDep.setName(name);
 		depDao.update(newDep);
 		System.out.println("Update complete! New name set as: " + depDao.findById(idDep).getName());
+
+		System.out.println("\n=== Test 6: Department Delete ===");
+		System.out.print("Enter the Department Id to be deleted: ");
+		idDep = sc.nextInt();
+		depDao.deleteById(idDep);
+
+		list = depDao.findAll();
+		for (Department obj : list) {
+			System.out.println(obj);
+		}
 
 		sc.close();
 
